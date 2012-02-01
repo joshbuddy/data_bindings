@@ -43,7 +43,7 @@ How about we represent it in YAML!
 
 Or, right out to a YAML file
 
-    b.convert_to_file(:yaml, "/tmp/proust.yaml")
+    b.convert_to_yaml_file("/tmp/proust.yaml")
 
 And load it back
 
