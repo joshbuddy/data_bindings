@@ -16,10 +16,10 @@ Start by loading from a JSON object
 
 We can go ahead and access that like we nomrally would
 
-   a[:name]
-   # "proust"
-   a[:name][0][:title]
-   # "Swan's Way"
+    a[:name]
+    # "proust"
+    a[:name][0][:title]
+    # "Swan's Way"
 
 Great, now let's get a validated copy of that object
 
