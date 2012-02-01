@@ -178,6 +178,14 @@ module DataBindings
         }
       end
 
+      def to_nonindifferent_hash
+        keys.inject({}) { |h, k|
+          val = self[k]
+          h[k.to_s] = dump_val(val)
+          h
+        }
+      end
+
       def to_native
         valid!
         data = inject(IndifferentHash.new) { |h, (k, v)|

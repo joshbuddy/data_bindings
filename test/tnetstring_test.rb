@@ -3,7 +3,7 @@ require File.expand_path("../test_helper", __FILE__)
 describe "Data Bindings tnetstring" do
   describe "tnetstring parsing" do
     it "should parse tnetstring" do
-      a = DataBindings.from_tnetstring(TNetstring.dump(:author => 'siggy', :title => 'bible')).bind { property :author; property :title }
+      a = DataBindings.from_tnetstring(TNetstring.dump('author' => 'siggy', 'title' => 'bible')).bind { property :author; property :title }
       assert a.valid?
       assert_equal "siggy", a[:author]
     end

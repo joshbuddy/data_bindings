@@ -13,7 +13,7 @@ describe "Data Bindings yaml" do
     it "should generate yaml" do
       a = DataBindings.from_ruby('author' => 'siggy',"title" => 'koran').bind { property :author; property :title }
       assert a.valid?
-      assert_match /--- ?\nauthor: siggy\ntitle: koran\n/, a.convert_to_yaml
+      assert_match /--- ?\nauthor: siggy\ntitle: koran\n|--- ?\ntitle: koran\nauthor: siggy\n/, a.convert_to_yaml
     end
   end
 end

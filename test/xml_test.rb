@@ -13,7 +13,8 @@ describe "Data Bindings xml" do
     it "should generate yaml" do
       a = DataBindings.from_ruby('author' => 'siggy',"title" => 'koran').bind { property :author; property :title }
       assert a.valid?
-      assert_equal "<?xml version=\"1.0\" encoding=\"UTF-8\"?><doc><author>siggy</author><title>koran</title></doc>", a.convert_to_xml
+      assert ["<?xml version=\"1.0\" encoding=\"UTF-8\"?><doc><author>siggy</author><title>koran</title></doc>",
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?><doc><title>koran</title><author>siggy</author></doc>"].include?(a.convert_to_xml)
     end
   end
 end

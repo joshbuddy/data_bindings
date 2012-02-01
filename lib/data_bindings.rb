@@ -28,6 +28,10 @@ module DataBindings
       DefaultGeneratorInstance.send(m, *args, &blk)
     end
 
+    def type(name, &blk)
+      DefaultGeneratorInstance.type(name, &blk)
+    end
+
     def true_boolean?(el)
       el == true or el == 'true' or el == 1 or el == '1' or el == 'yes'
     end

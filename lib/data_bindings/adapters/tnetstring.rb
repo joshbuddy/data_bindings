@@ -22,7 +22,7 @@ module DataBindings
         # @param [Array, Hash] obj The object to be represented in JSON
         # @return [String] The Tnetstring representation of this object
         def force_convert_to_tnetstring
-          ::TNetstring.dump(self)
+          ::TNetstring.dump(self.to_hash)
         end
         gentle_require_gem :force_convert_to_tnetstring, 'tnetstring'
         standard_converter :convert_to_tnetstring

@@ -17,7 +17,7 @@ module DataBindings
         include ConverterHelper
 
         def force_convert_to_yaml
-          ::YAML::dump(self.to_hash)
+          ::YAML::dump(self.to_nonindifferent_hash)
         end
         standard_converter :convert_to_yaml
       end
