@@ -97,6 +97,18 @@ module DataBindings
       @native_constructors ||= {}
     end
 
+    def class_for(name, superclass = Object, &blk)
+      cls = Class.new(superclass, &blk)
+      for_native(name) { |props|
+        inst = cls.allocate
+        props.each do |k, v|
+          inst.instance_variable_set(:"@#{k}", v)
+        end
+        inst.send(:initialize)
+        inst
+      }
+    end
+
     private
     # @api private
     def build!
