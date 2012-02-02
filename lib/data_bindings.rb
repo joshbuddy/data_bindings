@@ -24,7 +24,6 @@ module DataBindings
   class << self
     # Sends all methods calls to DefaultGenerator
     def method_missing(m, *args, &blk)
-      DefaultGeneratorInstance.send(:build!)
       DefaultGeneratorInstance.send(m, *args, &blk)
     end
 

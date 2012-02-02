@@ -44,7 +44,7 @@ module DataBindings
     # @yield [*Object] All arguments passed to the method used to invoke this reader
     def reader(name, &blk)
       @reader_module.define_singleton_method(name, &blk)
-      @build = false
+      build!
     end
 
     # Defines a writer
@@ -73,7 +73,7 @@ module DataBindings
     # @param [Object] The adapter
     def register(name, cls)
       @adapters[name] = cls
-      @build = false
+      build!
     end
 
     # Resets the generator to a blank state
@@ -100,7 +100,6 @@ module DataBindings
     private
     # @api private
     def build!
-      return if @built
       @adapters.each do |name, cls|
         unless @adapter_classes[name]
           @adapter_classes[name] = cls.to_s.split('::').inject(Object) {|const, n| const.const_get(n)}
@@ -118,7 +117,6 @@ module DataBindings
           end
         end
       end
-      @build = true
     end
   end
 
