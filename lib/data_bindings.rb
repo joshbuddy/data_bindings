@@ -1,4 +1,4 @@
-require 'hashie'
+require 'ext/hashie'
 
 require 'data_bindings/util'
 require 'data_bindings/generator'
