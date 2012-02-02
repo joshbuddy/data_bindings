@@ -11,14 +11,10 @@ module DataBindings
       
       
       def parse_nested_query(qs, d = nil)
-        params = {}
-        
-        (qs || '').split(d ? /[#{d}] */n : /[&;] */n).each do |p|
+        (qs || '').split(d ? /[#{d}] */n : /[&;] */n).inject({}) do |params, p|
           k, v = p.split('=', 2).map { |s| CGI::unescape(s) }
           normalize_params(params, k, v)
         end
-        
-        return params
       end
       
       private
@@ -26,9 +22,9 @@ module DataBindings
         name =~ %r(\A[\[\]]*([^\[\]]+)\]*)
         k = $1 || ''
         after = $' || ''
-        
-        return if k.empty?
-        
+
+        return params if k.empty?
+
         if after == ""
           params[k] = v
         elsif after == "[]"
