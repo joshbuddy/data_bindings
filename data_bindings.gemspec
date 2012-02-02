@@ -5,7 +5,7 @@ require "data_bindings/version"
 Gem::Specification.new do |s|
   s.name        = "data_bindings"
   s.version     = DataBindings::VERSION
-  s.authors     = ["Joshual Hull"]
+  s.authors     = ["Joshual Hull", "Benjamin Coe"]
   s.email       = ["joshbuddy@gmail.com"]
   s.homepage    = "http://github.com/joshbuddy/data_bindings"
   s.summary     = %q{Bind data to and from things}
